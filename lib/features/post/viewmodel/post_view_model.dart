@@ -13,10 +13,12 @@ abstract class _PostViewModelBase with Store {
   List<Post> posts = [];
   final url = "https://jsonplaceholder.typicode.com/posts";
 
+  @observable
   bool isServiceRequestLoading = false;
 
   @action
   Future<void> getAllPosts() async {
+    print("get");
     changeRequest();
     final response = await Dio().get(url);
     if(response.statusCode == HttpStatus.ok){
